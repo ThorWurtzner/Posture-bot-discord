@@ -5,6 +5,7 @@ import os
 import discord
 
 from threading import Timer
+import time
 
 from discord.ext import commands
 from discord import FFmpegPCMAudio
@@ -43,15 +44,18 @@ bot = commands.Bot(command_prefix="-")
 async def posture(ctx):
     if ctx.author.voice:
         await ctx.reply(f"Joining {ctx.author.name}'s channel ☜(ﾟヮﾟ☜)")
-        vc = await ctx.author.voice.channel.connect()
+        # vc = await ctx.author.voice.channel.connect()
 
+        await ctx.author.voice.channel.connect()
         source = FFmpegPCMAudio(executable="C:/ffmpeg/ffmpeg.exe", source='sound.mp3')
 
+
+        # Probably should work
         def set_interval():
-            vc.play(source, after=None)
-            Timer(10.0, set_interval).start()
-            
-        Timer(10.0, set_interval).start()
+            ctx.voice_client.play(source, after=lambda: Timer(3.0, set_interval()).start())
+
+        set_interval()
+
     else:
         await ctx.reply("You must be in a voice channel.")
 
