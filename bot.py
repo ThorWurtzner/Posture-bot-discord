@@ -41,7 +41,8 @@ GUILD = os.getenv('DISCORD_GUILD')
 bot = commands.Bot(command_prefix="-")
 
 async def play_source(ctx):
-    source = FFmpegPCMAudio(executable="C:/ffmpeg/ffmpeg.exe", source='sound.mp3')
+    # put below for local use -> executable="C:/ffmpeg/ffmpeg.exe"
+    source = FFmpegPCMAudio(source='sound.mp3')
     ctx.voice_client.play(source, after=lambda e: bot.loop.create_task(play_source(ctx)))
     time.sleep(10)
 
