@@ -40,21 +40,19 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 bot = commands.Bot(command_prefix="-")
 
+async def play_source(ctx):
+    source = FFmpegPCMAudio(executable="C:/ffmpeg/ffmpeg.exe", source='sound.mp3')
+    ctx.voice_client.play(source, after=lambda e: bot.loop.create_task(play_source(ctx)))
+    time.sleep(10)
+
 @bot.command()
 async def posture(ctx):
     if ctx.author.voice:
         await ctx.reply(f"Joining {ctx.author.name}'s channel ☜(ﾟヮﾟ☜)")
-        # vc = await ctx.author.voice.channel.connect()
-
         await ctx.author.voice.channel.connect()
-        source = FFmpegPCMAudio(executable="C:/ffmpeg/ffmpeg.exe", source='sound.mp3')
 
-
-        # Probably should work
-        def set_interval():
-            ctx.voice_client.play(source, after=lambda: Timer(3.0, set_interval()).start())
-
-        set_interval()
+        bot.loop.create_task(play_source(ctx))
+        time.sleep(10)
 
     else:
         await ctx.reply("You must be in a voice channel.")
