@@ -35,7 +35,8 @@ async def posture(ctx):
 @bot.command()
 async def leave(ctx):
     if ctx.voice_client:
-        await ctx.voice_client.disconnect()
+        # This line throws error
+        await ctx.author.voice.channel.disconnect()
     else:
         await ctx.send("I am not in a voice channel.")
 
