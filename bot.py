@@ -35,6 +35,7 @@ async def posture(ctx):
 @bot.command()
 async def leave(ctx):
     await ctx.voice_client.disconnect()
+    await ctx.reply("I'm out, cya!")
     # if ctx.voice_client:
         # This line throws error, why?
         # PLACEHOLDER
