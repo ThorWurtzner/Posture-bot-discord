@@ -34,10 +34,11 @@ async def posture(ctx):
 
 @bot.command()
 async def leave(ctx):
-    if ctx.voice_client:
+    await ctx.voice_client.disconnect()
+    # if ctx.voice_client:
         # This line throws error, why?
-        await ctx.voice_client.disconnect()
-    else:
-        await ctx.send("I am not in a voice channel.")
+        # PLACEHOLDER
+    # else:
+        # await ctx.send("I am not in a voice channel.")
 
 bot.run(TOKEN)
