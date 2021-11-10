@@ -17,7 +17,7 @@ async def play_source(ctx):
     # put below for local use -> executable="C:/ffmpeg/ffmpeg.exe"
     source = FFmpegPCMAudio(source='sound.mp3')
     ctx.voice_client.play(source, after=lambda e: bot.loop.create_task(play_source(ctx)))
-    time.sleep(3)
+    time.sleep(60 * 30)
 
 @bot.command()
 async def posture(ctx):
@@ -26,7 +26,7 @@ async def posture(ctx):
         await ctx.author.voice.channel.connect()
 
         bot.loop.create_task(play_source(ctx))
-        time.sleep(3)
+        time.sleep(60 * 30)
 
     else:
         await ctx.reply("You must be in a voice channel.")
