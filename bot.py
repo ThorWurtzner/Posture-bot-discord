@@ -16,8 +16,8 @@ bot = commands.Bot(command_prefix="-")
 async def play_source(ctx):
     # put below for local use -> executable="C:/ffmpeg/ffmpeg.exe"
     source = FFmpegPCMAudio(source='sound.mp3')
-    ctx.voice_client.play(source, after=lambda e: bot.loop.create_task(play_source(ctx)))
     await asyncio.sleep(900)
+    ctx.voice_client.play(source, after=lambda e: bot.loop.create_task(play_source(ctx)))
 
 @bot.command()
 async def posture(ctx):
