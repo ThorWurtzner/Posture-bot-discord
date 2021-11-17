@@ -24,6 +24,8 @@ async def posture(ctx):
     if ctx.author.voice and not ctx.voice_client:
         await ctx.reply(f"Joining {ctx.author.name}'s channel ☜(ﾟヮﾟ☜)")
         await ctx.author.voice.channel.connect()
+        greeting = FFmpegPCMAudio(source='greeting.mp3')
+        ctx.voice_client.play(greeting)
 
         bot.loop.create_task(play_source(ctx))
 
