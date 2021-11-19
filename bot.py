@@ -32,6 +32,20 @@ async def posture(ctx):
     else:
         await ctx.reply("You must be in a voice channel.")
 
+@bot.command()
+async def suh(ctx):
+    if ctx.voice_client:
+        greeting = FFmpegPCMAudio(source='greeting.mp3')
+        await ctx.voice_client.play(greeting)
+    else:
+        await ctx.send("I am not in a voice channel.")
+
+@bot.command()
+async def dude(ctx):
+    if ctx.voice_client:
+        await ctx.reply("suh")
+    else:
+        await ctx.send("I am not in a voice channel.")
 
 @bot.command()
 async def leave(ctx):
