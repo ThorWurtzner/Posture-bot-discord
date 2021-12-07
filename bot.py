@@ -16,6 +16,7 @@ bot = commands.Bot(command_prefix="-")
 async def play_source(ctx):
     # put below for local use -> executable="C:/ffmpeg/ffmpeg.exe"
     source = FFmpegPCMAudio(source='sound.mp3')
+
     await asyncio.sleep(900)
     ctx.voice_client.play(source, after=lambda e: bot.loop.create_task(play_source(ctx)))
 
@@ -44,6 +45,14 @@ async def suh(ctx):
 async def dude(ctx):
     if ctx.voice_client:
         await ctx.reply("suh")
+    else:
+        await ctx.send("I am not in a voice channel.")
+
+@bot.command()
+async def boi(ctx):
+    if ctx.voice_client:
+        songClip = FFmpegPCMAudio(source='islandboy.mp3')
+        await ctx.voice_client.play(songClip)
     else:
         await ctx.send("I am not in a voice channel.")
 
