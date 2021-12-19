@@ -74,6 +74,14 @@ async def sus(ctx):
     else:
         await ctx.send("I am not in a voice channel.")
 
+@bot.command()
+async def bunda(ctx):
+    if ctx.voice_client:
+        fatbunda = FFmpegPCMAudio(source='fatbunda.mp3')
+        await ctx.voice_client.play(fatbunda)
+    else:
+        await ctx.send("I am not in a voice channel.")
+
 # async def check():
 #     memberCount = len(client.voice_channel.members)
 #     if memberCount == 1:
