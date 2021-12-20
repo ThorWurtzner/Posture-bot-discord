@@ -38,8 +38,8 @@ async def posture(ctx):
 @bot.command()
 async def suh(ctx):
     if ctx.voice_client:
-        greeting = FFmpegPCMAudio(source='greeting.mp3')
-        await ctx.voice_client.play(greeting)
+        suh = FFmpegPCMAudio(source='suh.mp3')
+        await ctx.voice_client.play(suh)
     else:
         await ctx.send("I am not in a voice channel.")
 
@@ -79,6 +79,30 @@ async def bunda(ctx):
     if ctx.voice_client:
         fatbunda = FFmpegPCMAudio(source='fatbunda.mp3')
         await ctx.voice_client.play(fatbunda)
+    else:
+        await ctx.send("I am not in a voice channel.")
+
+@bot.command()
+async def benzendat(ctx):
+    if ctx.voice_client:
+        benzendat = FFmpegPCMAudio(source='benzendat.mp3')
+        await ctx.voice_client.play(benzendat)
+    else:
+        await ctx.send("I am not in a voice channel.")
+
+@bot.command()
+async def lyng(ctx):
+    if ctx.voice_client:
+        lyng = FFmpegPCMAudio(source='lyng.mp3')
+        await ctx.voice_client.play(lyng)
+    else:
+        await ctx.send("I am not in a voice channel.")
+
+@bot.command()
+async def sigurdsuh(ctx):
+    if ctx.voice_client:
+        sigurd = FFmpegPCMAudio(source='sigurd.mp3')
+        await ctx.voice_client.play(sigurd)
     else:
         await ctx.send("I am not in a voice channel.")
 
