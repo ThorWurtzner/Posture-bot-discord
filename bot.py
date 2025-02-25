@@ -17,7 +17,6 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 intents = Intents.default()
 intents.message_content = True
-intents.message_mentions = True
 intents.voice_states = True
 
 bot = commands.Bot(command_prefix="-", intents=intents)
