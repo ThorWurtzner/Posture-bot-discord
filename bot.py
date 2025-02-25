@@ -5,6 +5,7 @@ import asyncio
 from discord.ext import commands
 from discord import FFmpegPCMAudio, voice_client
 from discord import Client;
+from discord import Intents
 
 from dotenv import load_dotenv
 
@@ -12,8 +13,14 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
-bot = commands.Bot(command_prefix="-")
 # client = Client();
+
+intents = Intents.default()
+intents.message_content = True
+intents.message_mentions = True
+intents.voice_states = True
+
+bot = commands.Bot(command_prefix="-", intents=intents)
 
 async def play_source(ctx):
     # put below for local use -> executable="C:/ffmpeg/ffmpeg.exe"
